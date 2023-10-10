@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class PlayerDead : MonoBehaviour
+{
+
+    private float timer = 0;
+    private float deathInterval = 3;
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer > deathInterval)
+        {
+            Destroy(gameObject);
+            RestartLevel();
+        }
+    }
+
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+}
